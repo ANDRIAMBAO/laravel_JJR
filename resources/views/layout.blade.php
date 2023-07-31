@@ -115,7 +115,7 @@
       <div class="col-9">
         <div class="card" style="width: 100%; margin-left:75px; margin-right:0px;">
           <div class="card-header bg-primary" style="color:white; font-size: 18px; font-weight:bold;" style="width: 100%;">
-            School Management !
+            Ny sekolintsika
           </div>
           <div class="card-body">
 
@@ -127,7 +127,7 @@
             <p class="card-text">
 
             </p>
-            <a href="#" class="btn btn-primary">Read More !</a>
+            <a href="#" class="btn btn-primary">fanazavana</a>
           </div>
         </div>
       </div>

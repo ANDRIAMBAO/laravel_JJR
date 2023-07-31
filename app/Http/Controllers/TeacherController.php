@@ -25,7 +25,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        //
+        return view('createT');
     }
 
     /**
@@ -36,7 +36,22 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData=$request->validate([
+            'id'=>'required',
+            'nom'=>'required',
+            'adresse'=>'required',
+            'phone'=>'required',
+            'email'=>'required',
+            'parcours'=>'required',
+            'image'=>'required/image/mimes:jpg,png,gpej,gif',
+        ]);
+        $image=$request->file('image');
+        $destinationPath='image/';
+        $profileImage=date('ymdtis').".".$image->getClientOriginalExtension();
+        $image->move($destinationPath , $profileImage);
+        $validateData=['image']=$profileImage;
+        $students=Students::create($validateData);
+        return redirect('/student');
     }
 
     /**

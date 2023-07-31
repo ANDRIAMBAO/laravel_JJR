@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Students;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\Return_;
 
 class StudentController extends Controller
 {
@@ -25,7 +26,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -36,7 +37,22 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData=$request->validate([
+            'id'=>'required',
+            'nom'=>'required',
+            'adresse'=>'required',
+            'phone'=>'required',
+            'email'=>'required',
+            'parcours'=>'required',
+            'image'=>'required/image/mimes:jpg,png,gpej,gif',
+        ]);
+        $image=$request->file('image');
+        $destinationPath='image/';
+        $profileImage=date('ymdtis').".".$image->getClientOriginalExtension();
+        $image->move($destinationPath , $profileImage);
+        $validateData=['image']=$profileImage;
+        $students=Students::create($validateData);
+        return redirect('/student');
     }
 
     /**
@@ -45,9 +61,9 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Students $student)
     {
-        //
+        return view('show',compact('student'))
     }
 
     /**

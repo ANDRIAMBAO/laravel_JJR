@@ -17,17 +17,32 @@
     </tr>
 </thead>
 <tbody>
+    @foreach($student as $student)
     <tr>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
+        <td>{{$student->id}}</td>
+        <td>{{$student->nom}}</td>
+        <td>{{$student->adresse}}</td>
+        <td>{{$student->phone}}</td>
+        <td>{{$student->email}}</td>
+        <td>{{$student->parcours}}</td>
+        <td>{{$student->image}}</td>
+        <td>
+            <form  method="POST">
+                <a class="btn btn-info" href="{route{'student.show',student->id}}">AFFICHER</a>
+            </form>
+        </td>
+        <td>
+            <form  method="POST">
+                <a class="btn btn-info" href="{route{'student.edit',student->id}}">MODIFFIER</a>
+            </form>
+        </td>
+        <td>
+            <form  method="POST">
+                <a class="btn btn-primary" href="{route{'student.delete',student->id}}">SUPPRIMER</a>
+            </form>
+        </td>
     </tr>
+    @endforeach
 </tbody>
 </table>
 </div>

@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Students extends Model
 {
     use HasFactory;
+    protected $filiable=['id','nom','adresse','phone','email','parcours','image'];
 }
